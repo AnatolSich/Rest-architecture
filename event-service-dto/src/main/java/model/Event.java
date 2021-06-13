@@ -1,9 +1,6 @@
 package model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @Entity
 public class Event implements Serializable {
     @Id
@@ -34,4 +32,12 @@ public class Event implements Serializable {
     @Column
     @Enumerated(EnumType.STRING)
     private EventType eventType;
+
+    public Event(String title, String place, String speaker, LocalDateTime dateTime, EventType eventType) {
+        this.title = title;
+        this.place = place;
+        this.speaker = speaker;
+        this.dateTime = dateTime;
+        this.eventType = eventType;
+    }
 }
